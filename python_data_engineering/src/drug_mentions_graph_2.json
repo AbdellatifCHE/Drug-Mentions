@@ -1,0 +1,96 @@
+{
+  "diphenhydramine": {
+    "journals": {
+      "Journal of emergency nursing": [
+        {
+          "date": "2019-01-01",
+          "title": "a 44-year-old man with erythema of the face diphenhydramine, neck, and chest, weakness, and palpitations"
+        },
+        {
+          "date": "2019-01-01",
+          "title": "an evaluation of benadryl, pyribenzamine, and other so-called diphenhydramine antihistaminic drugs in the treatment of allergy."
+        },
+        {
+          "date": "2020-01-01",
+          "title": "use of diphenhydramine as an adjunctive sedative for colonoscopy in patients chronically on opioids"
+        },
+        {
+          "date": "2020-01-01",
+          "title": "phase 2 study iv quzyttir\u2122 (cetirizine hydrochloride injection) vs v diphenhydramine"
+        },
+        {
+          "date": "2020-01-01",
+          "title": "feasibility of a randomized controlled clinical trial comparing the use of cetirizine to replace diphenhydramine in the prevention of reactions related to paclitaxel"
+        }
+      ],
+      "The Journal of pediatrics": [
+        {
+          "date": "2019-01-02",
+          "title": "diphenhydramine hydrochloride helps symptoms of ciguatera fish poisoning."
+        }
+      ]
+    }
+  },
+  "tetracycline": {
+    "journals": {
+      "Journal of food protection": [
+        {
+          "date": "2020-01-01",
+          "title": "tetracycline resistance patterns of lactobacillus buchneri group strains."
+        }
+      ],
+      "American journal of veterinary research": [
+        {
+          "date": "2020-01-02",
+          "title": "appositional tetracycline bone formation rates in the beagle."
+        }
+      ],
+      "Psychopharmacology": [
+        {
+          "date": "2020-01-01",
+          "title": "rapid reacquisition of contextual fear following extinction in mice: effects of amount of extinction, tetracycline acute ethanol withdrawal, and ethanol intoxication."
+        }
+      ]
+    }
+  },
+  "ethanol": {
+    "journals": {
+      "Psychopharmacology": [
+        {
+          "date": "2020-01-01",
+          "title": "rapid reacquisition of contextual fear following extinction in mice: effects of amount of extinction, tetracycline acute ethanol withdrawal, and ethanol intoxication."
+        }
+      ]
+    }
+  },
+  "epinephrine": {
+    "journals": {
+      "The journal of allergy and clinical immunology. In practice": [
+        {
+          "date": "2020-02-01",
+          "title": "the high cost of epinephrine autoinjectors and possible alternatives."
+        },
+        {
+          "date": "2020-03-01",
+          "title": "time to epinephrine treatment is associated with the risk of mortality in children who achieve sustained rosc after traumatic out-of-hospital cardiac arrest."
+        }
+      ],
+      "Journal of emergency nursing\\xc3\\x28": [
+        {
+          "date": "2020-04-27",
+          "title": "tranexamic acid versus epinephrine during exploratory tympanotomy"
+        }
+      ]
+    }
+  },
+  "betamethasone": {
+    "journals": {
+      "H\u00f4pitaux Universitaires de Gen\u00e8ve": [
+        {
+          "date": "2020-01-01",
+          "title": "preemptive infiltration with betamethasone and ropivacaine for postoperative pain in laminoplasty or \\xc3\\xb1 laminectomy"
+        }
+      ]
+    }
+  }
+}

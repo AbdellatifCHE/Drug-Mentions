@@ -1,0 +1,68 @@
+{
+  "diphenhydramine": {
+    "journals": {
+      "Journal of emergency nursing": [
+        {
+          "date": "2019-01-01",
+          "title": "a 44-year-old man with erythema of the face diphenhydramine, neck, and chest, weakness, and palpitations"
+        },
+        {
+          "date": "2019-01-01",
+          "title": "an evaluation of benadryl, pyribenzamine, and other so-called diphenhydramine antihistaminic drugs in the treatment of allergy."
+        }
+      ],
+      "The Journal of pediatrics": [
+        {
+          "date": "2019-01-02",
+          "title": "diphenhydramine hydrochloride helps symptoms of ciguatera fish poisoning."
+        }
+      ]
+    }
+  },
+  "tetracycline": {
+    "journals": {
+      "Journal of food protection": [
+        {
+          "date": "2020-01-01",
+          "title": "tetracycline resistance patterns of lactobacillus buchneri group strains."
+        }
+      ],
+      "American journal of veterinary research": [
+        {
+          "date": "2020-01-02",
+          "title": "appositional tetracycline bone formation rates in the beagle."
+        }
+      ],
+      "Psychopharmacology": [
+        {
+          "date": "2020-01-01",
+          "title": "rapid reacquisition of contextual fear following extinction in mice: effects of amount of extinction, tetracycline acute ethanol withdrawal, and ethanol intoxication."
+        }
+      ]
+    }
+  },
+  "ethanol": {
+    "journals": {
+      "Psychopharmacology": [
+        {
+          "date": "2020-01-01",
+          "title": "rapid reacquisition of contextual fear following extinction in mice: effects of amount of extinction, tetracycline acute ethanol withdrawal, and ethanol intoxication."
+        }
+      ]
+    }
+  },
+  "epinephrine": {
+    "journals": {
+      "The journal of allergy and clinical immunology. In practice": [
+        {
+          "date": "2020-02-01",
+          "title": "the high cost of epinephrine autoinjectors and possible alternatives."
+        },
+        {
+          "date": "2020-03-01",
+          "title": "time to epinephrine treatment is associated with the risk of mortality in children who achieve sustained rosc after traumatic out-of-hospital cardiac arrest."
+        }
+      ]
+    }
+  }
+}
