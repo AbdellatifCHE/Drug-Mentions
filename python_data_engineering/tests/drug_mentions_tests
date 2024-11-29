@@ -1,0 +1,93 @@
+import unittest
+import pandas as pd
+from datetime import datetime
+from common import date_formater
+from pipeline import find_drug_mentions, create_drug_mentions_graph
+
+
+class TestCommon(unittest.TestCase):
+    def test_date_formater(self):
+        """Test date_formater with multiple formats"""
+        self.assertEqual(
+            date_formater("01/01/2020"), datetime(2020, 1, 1)
+        )  # Format: %d/%m/%Y
+        self.assertEqual(
+            date_formater("2020-01-01"), datetime(2020, 1, 1)
+        )  # Format: %Y-%m-%d
+        self.assertEqual(
+            date_formater("1 January 2020"), datetime(2020, 1, 1)
+        )  # Format: %d %B %Y
+        self.assertIsNone(
+            date_formater("invalid-date")
+        )  # Should return None for invalid dates
+
+
+class TestPipeline(unittest.TestCase):
+    def test_find_drug_mentions(self):
+        """Test find_drug_mentions function"""
+        mentions = find_drug_mentions(
+            self.drugs_df["drug"], self.pubmed_df["title"]
+        )
+        expected_mentions = [
+            ("aspirin", "Aspirin for headache"),
+            ("ibuprofen", "Ibuprofen benefits"),
+        ]
+        self.assertEqual(mentions, expected_mentions)
+
+    def test_create_drug_mentions_graph(self):
+        """Test create_drug_mentions_graph function"""
+        drug_mentions_df = pd.DataFrame(
+            [
+                {"drug": "aspirin", "title": "Aspirin for headache", "source": "PubMed"},
+                {"drug": "ibuprofen", "title": "Ibuprofen benefits", "source": "PubMed"},
+                {
+                    "drug": "paracetamol",
+                    "title": "Paracetamol in flu treatment",
+                    "source": "Clinical Trial",
+                },
+            ]
+        )
+        graph = create_drug_mentions_graph(
+            drug_mentions_df, self.pubmed_df, self.clinical_trials_df
+        )
+
+        expected_graph = {
+            "aspirin": {
+                "journals": {
+                    "Journal A": [
+                        {
+                            "date": "2020-01-01",
+                            "title": "Aspirin for headache",
+                            "source": "PubMed",
+                        }
+                    ]
+                }
+            },
+            "ibuprofen": {
+                "journals": {
+                    "Journal B": [
+                        {
+                            "date": "2020-01-02",
+                            "title": "Ibuprofen benefits",
+                            "source": "PubMed",
+                        }
+                    ]
+                }
+            },
+            "paracetamol": {
+                "journals": {
+                    "Journal C": [
+                        {
+                            "date": "2020-01-03",
+                            "title": "Paracetamol in flu treatment",
+                            "source": "Clinical Trial",
+                        }
+                    ]
+                }
+            },
+        }
+        self.assertEqual(graph, expected_graph)
+
+
+if __name__ == "__main__":
+    unittest.main()
