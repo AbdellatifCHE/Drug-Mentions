@@ -1,10 +1,16 @@
+"""
+Drug Mentions Pipeline: Extracting and Structuring Drug Mentions from PubMed and Clinical Trials Datasets
+
+Output: A JSON file named `drug_mentions_graph.json`, containing the processed data in a structured format.
+"""
+
 import unicodedata
 import pandas as pd
 import json
 import re
 from collections import Counter
 
-from common import date_formater
+from python_data_engineering.src.utils import date_formater
 
 ############################ ############################ ############################ 
     ############################ Step 1: Load Data ############################
@@ -13,12 +19,17 @@ from common import date_formater
 drugs_file_path = "../data/drugs.csv"
 pubmed_file_path = "../data/pubmed.csv"
 clinical_trials_file_path = "../data/clinical_trials.csv"
+pubmed_json_file_path = "../data/pubmed.json"
 
 # Load datasets
 # Read the files with proper encoding, utf-8 is most common for special characters
 drugs_df = pd.read_csv(drugs_file_path, dtype=str, encoding='utf-8')
-pubmed_df = pd.read_csv(pubmed_file_path, dtype=str, encoding='utf-8')
+pubmed_csv_df = pd.read_csv(pubmed_file_path, dtype=str, encoding='utf-8')
 clinical_trials_df = pd.read_csv(clinical_trials_file_path, dtype=str, encoding='utf-8')
+pubmed_json_df = pd.read_json(pubmed_json_file_path, dtype=str, convert_dates=False, encoding='utf-8')
+
+# Merge PubMed datasets
+pubmed_df = pd.concat([pubmed_csv_df, pubmed_json_df])
 
 ############################ ############################ ############################ 
     ########################### Step 2: Clean the Data ###########################
@@ -41,6 +52,18 @@ clinical_trials_df["date"] = clinical_trials_df["date"].apply(date_formater) # C
     ################## Step 3: Find Drug Mentions in datasets ##################
 ############################ ############################ ############################
 def find_drug_mentions(drug_list, titles):
+    """
+    Finds mentions of drugs in a list of titles.
+
+    Args:
+        drug_list (pd.Series): A pandas Series containing drug names.
+        titles (pd.Series): A pandas Series containing publication titles.
+
+    Returns:
+        list of tuple: A list of tuples containing:
+            - Drug name
+            - Title in which the drug is mentioned
+    """
     mentions = []
     for drug in drug_list:
         matches = titles[titles.str.contains(rf"\b{drug}\b", regex=True)]
@@ -64,6 +87,17 @@ drug_mentions_df = pd.concat([pubmed_drug_mentions_df[["drug", "title", "source"
 
 # Step 4: Create the Drug Mentions Graph
 def create_drug_mentions_graph(drug_mentions_df, pubmed_df, clinical_trials_df):
+    """
+    Creates a JSON graph representing drug mentions in journals and clinica trials..
+
+    Args:
+        drug_mentions_df (pd.DataFrame): DataFrame containing drug mentions.
+        pubmed_df (pd.DataFrame): DataFrame containing PubMed data.
+        clinical_trials_df (pd.DataFrame): DataFrame containing Clinical Trials data.
+
+    Returns:
+        dict: A dictionary.
+    """
     # Initialize a dictionary to store the graph
     drug_graph = {}
     
@@ -97,13 +131,7 @@ def create_drug_mentions_graph(drug_mentions_df, pubmed_df, clinical_trials_df):
 # Generate the JSON graph for drug mentions
 drug_mentions_graph = create_drug_mentions_graph(drug_mentions_df, pubmed_df, clinical_trials_df)
 
-# print(drug_mentions_graph)
-
-# Output the result as a JSON string
-# json_output = json.dumps(drug_mentions_graph, indent=2, ensure_ascii=False)
-
 # Write the output to a JSON file
 with open("drug_mentions_graph.json", "w") as f:
-    # ensure_ascii=False: to preserve special characters in their original form
+    # ensure_ascii=False: to preserve special characters (like ™,é,è...) in their original form
     json.dump(drug_mentions_graph, f, indent=2, ensure_ascii=False)
-

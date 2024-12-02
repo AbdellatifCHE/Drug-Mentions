@@ -1,11 +1,11 @@
 import unittest
 import pandas as pd
 from datetime import datetime
-from common import date_formater
+from utils import date_formater
 from pipeline import find_drug_mentions, create_drug_mentions_graph
 
 
-class TestCommon(unittest.TestCase):
+class TestUtils(unittest.TestCase):
     def test_date_formater(self):
         """Test date_formater with multiple formats"""
         self.assertEqual(

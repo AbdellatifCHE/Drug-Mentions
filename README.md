@@ -7,12 +7,13 @@ The project is organized as follows:
 
 ```
 Drug-Mentions/
-├── python_data_engineering/
-│   ├── data/
-│   │   └── (datasets: drugs.csv, pubmed.csv, clinical_trials.csv)
-│   ├── src/
-│       ├── pipeline.py       # Main script to process data and generate JSON output
-│       └── common.py         # Utility functions for data cleaning and formatting
+├── data/
+│   └── (datasets: drugs.csv, pubmed.csv, pubmed.json, clinical_trials.csv)
+├── src/
+│   ├── pipeline.py       # Main script to process data and generate JSON output
+│   └── utils.py         # Utility functions for data cleaning and formatting
+├── test/
+│   └── (unit tests)
 └── sql/
     └── (folder for SQL-related parts)
 ```
@@ -25,13 +26,14 @@ Drug-Mentions/
      - Generates a JSON graph that maps drug mentions to journals, titles, and publication dates.
    - Outputs the graph to `drug_mentions_graph.json`.
 
-2. **`common.py`**
+2. **`utils.py`**
    - Contains utility functions:
      - `date_formater`: Converts dates from multiple formats to a standardized format.
 
 3. **Datasets** (stored in `data/`):
    - **`drugs.csv`**: List of drugs.
-   - **`pubmed.csv`**: Publications from PubMed.
+   - **`pubmed.csv`**: Publications from PubMed (CSV format).
+   - **`pubmed.json`**: Publications from PubMed (JSON format).
    - **`clinical_trials.csv`**: Clinical trial publications.
 
 4. **Output**:
@@ -64,15 +66,14 @@ To run the project locally, you will need:
 ---
 
 ## **Execution**
-1. Ensure the datasets (`drugs.csv`, `pubmed.csv`, `clinical_trials.csv`) are present in the `data/` folder.
-2. Run the `pipeline.py` script:
+1. Ensure the datasets (`drugs.csv`, `pubmed.csv`, `pubmed.json`, `clinical_trials.csv`) are present in the `data/` folder.
+2. Navigate to `src/` to run the `pipeline.py` script:
    ```bash
-   python python_data_engineering/src/pipeline.py
+   python -m pipeline
    ```
 3. The processed JSON output will be saved as `drug_mentions_graph.json` in the current working directory.
 
----
-
-## **Features**
-- Identification of drug mentions in PubMed and Clinical Trials titles.
-- JSON output mapping drugs to journals, publication titles, and sources.
+4. To execute the unit tests:
+```bash
+   python -m unittest discover -s test
+```
