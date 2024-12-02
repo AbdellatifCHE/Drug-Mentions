@@ -1,25 +1,22 @@
 """
-Drug Mentions Pipeline: Extracting and Structuring Drug Mentions from PubMed and Clinical Trials Datasets
+Drug Mentions Pipeline: Extracting and Structuring Drug Mentions from PubMed and Clinical Trials Datasets.
 
 Output: A JSON file named `drug_mentions_graph.json`, containing the processed data in a structured format.
 """
 
-import unicodedata
 import pandas as pd
 import json
-import re
-from collections import Counter
 
-from python_data_engineering.src.utils import date_formater
+from src.utils import date_formater
 
 ############################ ############################ ############################ 
     ############################ Step 1: Load Data ############################
 ############################ ############################ ############################
 # Path to datasets
-drugs_file_path = "../data/drugs.csv"
-pubmed_file_path = "../data/pubmed.csv"
-clinical_trials_file_path = "../data/clinical_trials.csv"
-pubmed_json_file_path = "../data/pubmed.json"
+drugs_file_path = "data/drugs.csv"
+pubmed_file_path = "data/pubmed.csv"
+clinical_trials_file_path = "data/clinical_trials.csv"
+pubmed_json_file_path = "data/pubmed.json"
 
 # Load datasets
 # Read the files with proper encoding, utf-8 is most common for special characters
@@ -133,5 +130,5 @@ drug_mentions_graph = create_drug_mentions_graph(drug_mentions_df, pubmed_df, cl
 
 # Write the output to a JSON file
 with open("drug_mentions_graph.json", "w") as f:
-    # ensure_ascii=False: to preserve special characters (like ™,é,è...) in their original form
+    # ensure_ascii=False: to preserve special characters (like ™,ô,è...) in their original form
     json.dump(drug_mentions_graph, f, indent=2, ensure_ascii=False)

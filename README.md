@@ -46,8 +46,6 @@ To run the project locally, you will need:
 1. **Python**: Version 3.7 or higher.
 2. **Libraries**:
    - `pandas`
-   - `re`
-   - `json`
 
 ### **Setup Instructions**
 1. Clone the repository or download the project folder.
@@ -67,9 +65,9 @@ To run the project locally, you will need:
 
 ## **Execution**
 1. Ensure the datasets (`drugs.csv`, `pubmed.csv`, `pubmed.json`, `clinical_trials.csv`) are present in the `data/` folder.
-2. Navigate to `src/` to run the `pipeline.py` script:
+2. Run the `pipeline.py` script:
    ```bash
-   python -m pipeline
+   python -m src.pipeline
    ```
 3. The processed JSON output will be saved as `drug_mentions_graph.json` in the current working directory.
 
