@@ -1,6 +1,6 @@
 
 # Drug-Mentions Project
-
+This project processes datasets related to drugs, PubMed articles, and clinical trials to identify mentions of drugs in publication and clinical trials titles.
 
 ## **Project Structure**
 The project is organized as follows:
