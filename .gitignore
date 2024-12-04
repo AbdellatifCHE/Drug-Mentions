@@ -42,3 +42,4 @@ Pipfile.lock
 # Output files
 *.json
 drug_mentions_graph.json
+!pubmed.json
