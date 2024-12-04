@@ -11,7 +11,7 @@ Drug-Mentions/
 │   └── (datasets: drugs.csv, pubmed.csv, pubmed.json, clinical_trials.csv)
 ├── src/
 │   ├── pipeline.py       # Main script to process data and generate JSON output
-│   └── utils.py         # Utility functions for data cleaning and formatting
+│   └── utils.py          # Utility functions for data loading, cleaning and processing
 ├── test/
 │   └── (unit tests)
 └── sql/
@@ -29,6 +29,8 @@ Drug-Mentions/
 2. **`utils.py`**
    - Contains utility functions:
      - `date_formater`: Converts dates from multiple formats to a standardized format.
+     - `find_drug_mentions`: Finds mentions of drugs in a list of titles.
+     - `create_drug_mentions_graph`: Creates a JSON graph representing drug mentions in journals and clinical trials.
 
 3. **Datasets** (stored in `data/`):
    - **`drugs.csv`**: List of drugs.
@@ -64,14 +66,19 @@ To run the project locally, you will need:
 ---
 
 ## **Execution**
-1. Ensure the datasets (`drugs.csv`, `pubmed.csv`, `pubmed.json`, `clinical_trials.csv`) are present in the `data/` folder.
-2. Run the `pipeline.py` script:
+1. Navigate to the `Drug-Mentions` folder.
+2. Ensure the datasets (`drugs.csv`, `pubmed.csv`, `pubmed.json`, `clinical_trials.csv`) are present in the `data/` folder.
+3. Run the script `pipeline.py` from the command line, passing the file paths as arguments:
    ```bash
-   python -m src.pipeline
+   python src/pipeline.py \
+       --drugs data/drugs.csv \
+       --pubmed_csv data/pubmed.csv \
+       --pubmed_json data/pubmed.json \
+       --clinical_trials data/clinical_trials.csv
    ```
-3. The processed JSON output will be saved as `drug_mentions_graph.json` in the current working directory.
+4. The processed JSON output will be saved as `drug_mentions_graph.json` in the current working directory (`Drug-Mentions/drug_mentions_graph.json`).
 
-4. To execute the unit tests:
+5. To execute the unit tests:
 ```bash
    python -m unittest discover -s test
 ```

@@ -1,9 +1,7 @@
 import unittest
 import pandas as pd
 from datetime import datetime
-from src.utils import date_formater
-from src.pipeline import find_drug_mentions, create_drug_mentions_graph
-
+from src.utils import date_formater, find_drug_mentions, create_drug_mentions_graph
 
 class TestUtils(unittest.TestCase):
     def test_date_formater(self):
@@ -21,8 +19,6 @@ class TestUtils(unittest.TestCase):
             date_formater("1 Jan 2020")
         )  # Should return None for invalid dates
 
-
-class TestPipeline(unittest.TestCase):
     def test_find_drug_mentions(self):
         """Test find_drug_mentions function"""
         mentions = find_drug_mentions(
@@ -95,7 +91,6 @@ class TestPipeline(unittest.TestCase):
             },
         }
         self.assertEqual(graph, expected_graph)
-
 
 if __name__ == "__main__":
     unittest.main()
